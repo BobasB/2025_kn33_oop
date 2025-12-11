@@ -1,4 +1,9 @@
 from book import Book, BookState
+from enum import Enum
+
+class StudentActions(Enum):
+    BORROW = "взяв"
+    RETURN = "повернув"
 
 class Student:
     def __init__(self, first_name, last_name):
@@ -9,9 +14,9 @@ class Student:
 
     def borrow_book(self, book: Book):
         if book.state != BookState.AVAILABLE:
-            print(f"Книга '{book.title}' недоступна для позики.")
+            print(f"{self.first_name} не може взяти книгу '{book.title}', Бо взята {book.borrower.first_name}.")
             return
-        book.state = BookState.BORROWED
+        book.set_who_borrowed(self)
         self.borrowed_books.append(book)
         print(f"{self.first_name} взяв книгу '{book.title}'.")
     
@@ -20,5 +25,8 @@ class Student:
             print(f"{self.first_name} не має книг для повернення.")
             return
         book = self.borrowed_books.pop()
-        book.state = BookState.AVAILABLE
+        book.set_release_borrower()
         print(f"{self.first_name} повернув книгу '{book.title}'.")
+    
+    def __str__(self):
+        return f"Студент: {self.first_name} {self.last_name} (ID: {self.student_id})"
