@@ -1,3 +1,6 @@
+import os
+import math
+
 import httpx
 r = httpx.get('https://www.google.com/')
 print(r.status_code)
