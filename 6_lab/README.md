@@ -22,3 +22,16 @@ pip list
 python anime.py
 deactivate
 ```
+
+### Пошук вразливостей
+```bash
+pipenv check --scan
+pipenv audit
+```
+
+### Файл .env
+```bash
+pipenv shell
+python app.py
+deactivate
+```

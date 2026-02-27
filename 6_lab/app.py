@@ -2,9 +2,13 @@ import os
 import math
 
 import httpx
-r = httpx.get('https://www.google.com/')
+
+print(f"Environment: {os.getenv('ENV_NAME')}")
+
+url = os.getenv('URL')
+r = httpx.get(url)
 print(r.status_code)
 
 import requests
-r = requests.get('https://www.google.com/')
+r = requests.get(url)
 print(r.status_code)
