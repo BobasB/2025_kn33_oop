@@ -35,3 +35,27 @@ pipenv shell
 python app.py
 deactivate
 ```
+
+### Менеджмент середовищ за допомогою Poetry
+- якщо при інсталяції випадє помилку, додайте `package-mode = false` в секцію
+```bash
+[tool.poetry]
+package-mode = false
+```
+
+```bash
+poetry init
+poetry install
+
+poetry add jikanpy-v4 Flask
+
+poetry show --tree
+
+eval $(poetry env activate)
+python anime.py
+deactivate 
+
+poetry add --group docs mkdocs
+
+poetry env remove --all
+poetry install --only docs
