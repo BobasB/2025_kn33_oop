@@ -1,1 +1,19 @@
-site_name: My Docs
+site_name: Лабораторна робота №6 - Віртуальні середовища Python
+site_description: Документація до проекту з вивчення управління віртуальними середовищами та залежностями в Python
+site_author: BobasB
+
+theme:
+  name: readthedocs
+  language: uk
+
+nav:
+  - Головна: index.md
+  - Встановлення: installation.md
+  - Використання: usage.md
+  - Опис модулів: api.md
+
+markdown_extensions:
+  - codehilite
+  - admonition
+  - toc:
+      permalink: true

@@ -1,17 +1,68 @@
-# Вітаємо на сторінці документації MkDocs!
+# Лабораторна робота №6: Віртуальні середовища Python
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Огляд проекту
 
-## Commands
+Цей проект демонструє роботу з віртуальними середовищами в Python та управління залежностями за допомогою різних інструментів.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Мета лабораторної роботи
 
-## Project layout
+- Вивчити основні підходи до створення віртуальних середовищ
+- Освоїти роботу з менеджерами пакетів (venv, pipenv, poetry)
+- Навчитися управляти залежностями проекту
+- Створити документацію за допомогою MkDocs
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## Основні компоненти проекту
+
+### 1. Віртуальні середовища
+
+Проект охоплює три основні підходи до управління віртуальними середовищами:
+
+- **venv** - вбудований модуль Python
+- **pipenv** - сучасний інструмент управління залежностями
+- **poetry** - потужний менеджер пакетів та залежностей
+
+### 2. Використані бібліотеки
+
+- `jikanpy-v4` - бібліотека для роботи з API MyAnimeList через Jikan
+- `Flask` - веб-фреймворк для створення веб-додатків
+- `httpx` - сучасний HTTP-клієнт
+- `requests` - популярна бібліотека для HTTP-запитів
+- `mkdocs` - генератор статичної документації
+
+### 3. Модулі проекту
+
+#### anime.py
+Демонстрація роботи з Jikan API для отримання інформації про аніме та персонажів.
+
+#### app.py
+Приклад Flask-додатку з використанням змінних оточення.
+
+## Структура проекту
+
+```
+6_lab/
+├── anime.py              # Робота з Jikan API
+├── app.py                # Flask додаток
+├── 1_venv/               # Приклад з venv
+│   └── requirements.txt
+├── 2_pipenv/             # Приклад з pipenv
+│   └── Pipfile
+└── 3_poetry/             # Приклад з poetry
+    ├── pyproject.toml
+    ├── mkdocs.yml
+    └── docs/
+        └── index.md
+```
+
+## Автор
+
+**BobasB**  
+Email: bugil.bogdan@gmail.com
+
+## Версія
+
+0.1.0
+
+## Ліцензія
+
+Навчальний проект для курсу ООП 2025

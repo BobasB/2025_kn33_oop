@@ -59,3 +59,16 @@ poetry add --group docs mkdocs
 
 poetry env remove --all
 poetry install --only docs
+```
+
+## Використання АІ
+- задали АІ промпт щоб він зробив документацію для проекту, і він створив її з використанням MkDocs.
+```
+cd 6_lab/3_poetry
+poetry install --only docs
+
+eval $(poetry env activate)
+mkdocs serve
+
+```
+Документація доступна за адресою http://127.0.0.1:8000/
