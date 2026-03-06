@@ -1,6 +1,7 @@
 # Віртуальні середовища
 
 ### Команди в терміналі
+#### приклад використання venv
 ```bash
 python -m venv ./my_env
 source my_env/Scripts/activate # для Windows
@@ -11,7 +12,7 @@ pip freeze > requirements.txt
 
 pip install -r requirements.txt
 ```
-
+#### приклад використання pipenv
 ```bash
 pipenv --python 3.13
 pipenv install
@@ -23,13 +24,13 @@ python anime.py
 deactivate
 ```
 
-### Пошук вразливостей
+#### Пошук вразливостей
 ```bash
 pipenv check --scan
 pipenv audit
 ```
 
-### Файл .env
+#### Файл .env
 ```bash
 pipenv shell
 python app.py
@@ -55,6 +56,8 @@ eval $(poetry env activate)
 python anime.py
 deactivate 
 
+poetry add --group dev flake8
+
 poetry add --group docs mkdocs
 
 poetry env remove --all
@@ -63,7 +66,7 @@ poetry install --only docs
 
 ## Використання АІ
 - задали АІ промпт щоб він зробив документацію для проекту, і він створив її з використанням MkDocs.
-```
+```bash
 cd 6_lab/3_poetry
 poetry install --only docs
 
@@ -71,4 +74,6 @@ eval $(poetry env activate)
 mkdocs serve
 
 ```
-Документація доступна за адресою http://127.0.0.1:8000/
+Після запуску документація доступна за адресою http://127.0.0.1:8000/
+
+# Далі доробляєте звіт самостійно
