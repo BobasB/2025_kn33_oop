@@ -42,10 +42,13 @@ async def setup_session_and_runner(app_name: str, user_id: str, session_id: str)
 
 async def reply_from_ai_agent(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     text = str(update.message.text)
-    user = "anonimous_user"  # You can replace this with actual user identification logic
-    session_id = "123"
-    logger.info(f"Received message: {text} | {context} | {update}")  # Log the received message and context
-    content = types.Content(role='user', parts=[types.Part(text=text)])
+    user = str(update.message.from_user.username)
+    session_id = str(update.message.chat_id)
+    logger.info(f"Отримано повідомлення: {text} | Користувач: {user} | Чат: {session_id}")
+    content = types.Content(role='user', parts=[
+        types.Part(text=f"Користувач: {user} задає наступне запитання: "), 
+        types.Part(text=text)]
+        )
     session, runner = await setup_session_and_runner(
         app_name="telegram_bot",
         user_id=user,
