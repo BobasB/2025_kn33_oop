@@ -23,6 +23,8 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+SESSION_RUNNER: dict[str, Runner] = {}
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
     user = update.effective_user
@@ -49,11 +51,18 @@ async def reply_from_ai_agent(update: Update, context: ContextTypes.DEFAULT_TYPE
         types.Part(text=f"Користувач: {user} задає наступне запитання: "), 
         types.Part(text=text)]
         )
-    session, runner = await setup_session_and_runner(
-        app_name="telegram_bot",
-        user_id=user,
-        session_id=session_id
-    )
+    if session_id not in SESSION_RUNNER.keys():
+        _, runner = await setup_session_and_runner(
+            app_name="telegram_bot",
+            user_id=user,
+            session_id=session_id
+        )
+        SESSION_RUNNER[session_id] = runner
+        logger.info(f"Створено нову сесію та Runner для чату {session_id}")
+    else:
+        runner = SESSION_RUNNER[session_id]
+        logger.info(f"Знайдено існуючу сесію та Runner для чату {session_id}")
+    
     events = runner.run_async(user_id=user, session_id=session_id, new_message=content)
 
     async for event in events:
