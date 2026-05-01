@@ -1,10 +1,12 @@
 title: "2025 KN-33 OOP"
 description: "Репозиторій для роботи з групою КН-33 з дисципліни Об'єктно-орієнтоване програмування (Python)"
-theme: minima
 lang: uk
+
+remote_theme: pages-themes/hacker@v0.2.0
 
 plugins:
   - jekyll-relative-links
+  - jekyll-remote-theme
 
 relative_links:
   enabled: true
