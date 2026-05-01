@@ -1,0 +1,27 @@
+title: "2025 KN-33 OOP"
+description: "Репозиторій для роботи з групою КН-33 з дисципліни Об'єктно-орієнтоване програмування (Python)"
+theme: minima
+lang: uk
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
+include:
+  - "*.md"
+  - "**/*.md"
+
+exclude:
+  - "*/1_venv/"
+  - "*/2_pipenv/"
+  - "*/3_poetry/"
+  - ".github/"
+  - "*.ipynb"
+  - "*.py"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "node_modules/"
+  - "vendor/"
