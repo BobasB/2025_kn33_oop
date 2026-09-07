@@ -1,0 +1,26 @@
+[project]
+name = "1-lab"
+version = "0.1.0"
+description = "Створюємо проект для тестування"
+authors = [
+    {name = "BobasB",email = "bugil.bogdan@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+[dependency-groups]
+dev = [
+    "black (>=26.5.1,<27.0.0)"
+]
+
+[tool.poetry]
+packages = [{ include = "1_lab", from = "src" }]
+
+[tool.poetry.scripts]
+game = "1_lab.game:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
