@@ -16,10 +16,12 @@ dev = [
 ]
 
 [tool.poetry]
-packages = [{ include = "1_lab", from = "src" }]
+packages = [{ include = "lab1", from = "src" }]
 
 [tool.poetry.scripts]
-game = "1_lab.game:main"
+game = "lab1.game:main"
+test = "tests.test_game:test_card_game"
+
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
