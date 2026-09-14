@@ -25,5 +25,5 @@ PYTHONPATH=src python -m unittest tests.test_game_unittest -v
 Або запуск unittest через автоматичне пошуку тестів:
 
 ```bash
-PYTHONPATH=src python -m unittest discover -s tests -p "test_game_unittest.py" -v
+poetry run python -m unittest -v
 ```

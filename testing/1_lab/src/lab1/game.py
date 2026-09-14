@@ -3,6 +3,9 @@ import random
 class CardGame:
     CARD_NAMES = ["Flame Dragon", "Ice Golem", "Thunder Phoenix", "Shadow Assassin", "Earth Titan"]
     def __init__(self):
+        """
+        Ініціалізація об'єкта CardGame з трьома атрибутами: name, attack та health.
+        """
         self.name = random.choice(CardGame.CARD_NAMES)
         self.attack = random.randint(1, 10)
         self.health = random.randint(20, 40)
@@ -12,8 +15,9 @@ class CardGame:
             current_attack = self.__calculate_critical_damage(self.attack)
             other_card.health -= current_attack
         else:
-            print("Ми можемо атакувати лише інші карти!")
-            return
+            msg = "Ми можемо атакувати лише інші карти!"
+            print(msg)
+            return msg
         print(f"""
 {self.name} нанесла {other_card.name} удар {current_attack}.
     {self.name} здоровя: {self.health} 
