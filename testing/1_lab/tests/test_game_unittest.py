@@ -34,6 +34,18 @@ class TestCardGameInitialization(unittest.TestCase):
         self.assertIsInstance(obj.attack, int, "Атрибут 'attack' не є цілим числом")
         self.assertIsInstance(obj.health, int, "Атрибут 'health' не є цілим числом")
 
+    def test_object_attributes_with_assetrs(self):
+        """
+        Перевірка атрибутів об'єкта CardGame з використанням assert.
+        """
+        obj = CardGame()
+        assert hasattr(obj, 'name'), "Об'єкт не має атрибуту 'name'"
+        assert hasattr(obj, 'attack'), "Об'єкт не має атрибуту 'attack'"
+        assert hasattr(obj, 'health'), "Об'єкт не має атрибуту 'health'"
+        #Показати похибку при обчисленні атрибутів
+        #assert obj
+
+
 
 class TestCardGameMethods(unittest.TestCase):
     def test_hit_another_card(self):

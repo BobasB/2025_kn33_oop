@@ -9,6 +9,7 @@ class CardGame:
         self.name = random.choice(CardGame.CARD_NAMES)
         self.attack = random.randint(1, 10)
         self.health = random.randint(20, 40)
+        self._crit_chance = 3/7
     
     def hit_another_card(self, other_card):
         if isinstance(other_card, CardGame):
@@ -26,7 +27,7 @@ class CardGame:
     @staticmethod
     def __calculate_critical_damage(base_damage):
         "Це статичний і щей приватний метод"
-        if random.random() < 0.2:  # 20% chance for a critical hit
+        if random.random() < 3/7:  # 20% chance for a critical hit
             print(f"Наносимо критичний удар!")
             return base_damage * 2
         if random.random() < 0.1:
