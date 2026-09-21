@@ -4,23 +4,55 @@ from lab1.game import CardGame
 
 
 class TestCardGameInitialization(unittest.TestCase):
+    def setUp(self):
+        """
+        Метод setUp виконується перед кожним тестом.
+        """
+        print("\n--- Виконується setUp ---")
+        self.card_game = CardGame()
+
+
+    def tearDown(self):
+        """
+        Метод tearDown виконується після кожного тесту.
+        """
+        print("--- Виконується tearDown ---\n")
+        del self.card_game
+
+    @classmethod
+    def setUpClass(cls):
+        """
+        Метод setUpClass виконується один раз перед усіма тестами.
+        Тільки за умови що значення є ідемпотентними, тобто не змінюються під час тестів.
+        """
+        print("\n=== Виконується setUpClass ===")
+        cls.test_names = ['name', 'attack', 'health']
+
+    @classmethod
+    def tearDownClass(cls):
+        """
+        Метод tearDownClass виконується один раз після усіх тестів.
+        """
+        print("=== Виконується tearDownClass ===\n")
+        del cls.test_names
+
     def test_card_game(self):
         """
         Перевірка створення об'єкта CardGame та глобальних атрибутів класу.
         """
-        obj = CardGame()
-        self.assertIsInstance(obj, CardGame, "Об'єкт не є екземпляром класу CardGame")
-        self.assertIsInstance(obj.CARD_NAMES, list, "CARD_NAMES не є списком")
-        self.assertGreater(len(obj.CARD_NAMES), 0, "CARD_NAMES не може бути порожнім")
+        print("!!!Тестуємо!!!")
+        self.assertIsInstance(self.card_game, CardGame, "Об'єкт не є екземпляром класу CardGame")
+        self.assertIsInstance(CardGame.CARD_NAMES, list, "CARD_NAMES не є списком")
+        self.assertGreater(len(CardGame.CARD_NAMES), 0, "CARD_NAMES не може бути порожнім")
 
     def test_object_attributes(self):
         """
         Перевірка наявності атрибутів об'єкта CardGame.
         """
-        obj = CardGame()
-        self.assertTrue(hasattr(obj, 'name'), "Об'єкт не має атрибуту 'name'")
-        self.assertTrue(hasattr(obj, 'attack'), "Об'єкт не має атрибуту 'attack'")
-        self.assertTrue(hasattr(obj, 'health'), "Об'єкт не має атрибуту 'health'")
+        
+        self.assertTrue(hasattr(self.card_game, 'name'), "Об'єкт не має атрибуту 'name'")
+        self.assertTrue(hasattr(self.card_game, 'attack'), "Об'єкт не має атрибуту 'attack'")
+        self.assertTrue(hasattr(self.card_game, 'health'), "Об'єкт не має атрибуту 'health'")
 
         # буде використовуватися для демонстрації роботи unittest
         #self.assertTrue(False, "Навмисно провалений тест для демонстрації роботи unittest")
@@ -29,21 +61,24 @@ class TestCardGameInitialization(unittest.TestCase):
         """
         Перевірка типів атрибутів об'єкта CardGame.
         """
-        obj = CardGame()
-        self.assertIsInstance(obj.name, str, "Атрибут 'name' не є рядком")
-        self.assertIsInstance(obj.attack, int, "Атрибут 'attack' не є цілим числом")
-        self.assertIsInstance(obj.health, int, "Атрибут 'health' не є цілим числом")
+        self.assertIsInstance(self.card_game.name, str, "Атрибут 'name' не є рядком")
+        self.assertIsInstance(self.card_game.attack, int, "Атрибут 'attack' не є цілим числом")
+        self.assertIsInstance(self.card_game.health, int, "Атрибут 'health' не є цілим числом")
 
     def test_object_attributes_with_assetrs(self):
         """
         Перевірка атрибутів об'єкта CardGame з використанням assert.
         """
-        obj = CardGame()
-        assert hasattr(obj, 'name'), "Об'єкт не має атрибуту 'name'"
-        assert hasattr(obj, 'attack'), "Об'єкт не має атрибуту 'attack'"
-        assert hasattr(obj, 'health'), "Об'єкт не має атрибуту 'health'"
-        #Показати похибку при обчисленні атрибутів
-        #assert obj
+        assert hasattr(self.card_game, 'name'), "Об'єкт не має атрибуту 'name'"
+        assert hasattr(self.card_game, 'attack'), "Об'єкт не має атрибуту 'attack'"
+        assert hasattr(self.card_game, 'health'), "Об'єкт не має атрибуту 'health'"
+
+    def test_object_attributes_values(self):
+        """
+        Показати похибку при обчисленні
+        """
+        #assert self.card_game._crit_chance == 0.428571428571428571, "Атрибут '_crit_chance' не дорівнює 1/3"
+        self.assertAlmostEqual(self.card_game._crit_chance, 3/7, places=5, msg="Атрибут '_crit_chance' не дорівнює 3/7")
 
 
 
