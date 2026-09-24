@@ -38,6 +38,27 @@ class CardGame:
             return 0
         return base_damage
 
+    def incorrect_interraction(self, i: int):
+        """
+        Метод для демонстрації неправильної взаємодії з об'єктом.
+        """
+        if i < 0:
+            raise ValueError("Значення не може бути від'ємним!")
+        if not isinstance(i, int):
+            raise TypeError("Значення повинно бути цілим числом!")
+        return i * 2
+
+    def example_with_input(self):
+        """
+        Метод для демонстрації взаємодії з користувачем через input.
+        """
+        user_input = input("Введіть число: ")
+        try:
+            number = int(user_input)
+            print(f"Ви ввели число: {number}")
+        except ValueError:
+            return 1
+
 def main():
     c = CardGame()
     print(f"{c.name} з характеристиками: атака {c.attack}, здоровя {c.health}")

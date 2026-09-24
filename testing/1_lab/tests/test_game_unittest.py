@@ -95,5 +95,38 @@ class TestCardGameMethods(unittest.TestCase):
         self.assertEqual(type(card2.hit_another_card(1)), str, "Метод hit_another_card не повертає рядок при атаці не карти")
 
 
+
+class TestCardGameWithRaisers(unittest.TestCase):
+    """
+    Клас для тестування методів, які викликаюсь виключення.
+    """
+    def test_incorrect_interraction(self):
+        """
+        Перевірка методу incorrect_interraction.
+        """
+        card = CardGame()
+        incorrect_values = [-1, -10, -1001, "string", 3.14, None, [], {}]
+        for value in incorrect_values:
+            # модифікатор доступу "with self.assertRaises" дозволяє перевірити, що викликається виключення
+            #print(f"Тестуємо виключення для значення: {value}")
+            with self.assertRaises((ValueError, TypeError), msg=f"Метод incorrect_interraction не піднімає ValueError для від'ємного значення {value}"):
+                card.incorrect_interraction(value)
+        self.assertEqual(card.incorrect_interraction(2), 4, "Метод incorrect_interraction не повертає правильне значення для додатнього числа")
+
+    def test_example_with_input(self):
+        """
+        Перевірка методу example_with_input.
+        """
+        card = CardGame()
+        # Використовуємо unittest.mock для імітації введення користувача
+        from unittest.mock import patch
+
+        with patch('builtins.input', return_value='5'):
+            card.example_with_input()  # Очікуємо, що метод виведе "Ви ввели число: 5"
+
+        with patch('builtins.input', return_value='not_a_number'):
+            result = card.example_with_input()  # Очікуємо, що метод поверне 1
+            self.assertEqual(result, 1, "Метод example_with_input не повертає 1 для некоректного введення")
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
