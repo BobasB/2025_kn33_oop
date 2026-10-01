@@ -59,6 +59,27 @@ class CardGame:
         except ValueError:
             return 1
 
+    def compare_input_arguments_reduced(self, a, b) -> int | None:
+        """
+        Метод для порівняння двох аргументів.
+        """
+        if a > b:
+            return a
+        if a < b:
+            return b
+
+    def compare_input_arguments_original(self, a, b) -> int | None:
+            """
+            Метод для порівняння двох аргументів.
+            """
+            if a > b:
+                return a
+            elif a < b:
+                return b
+            else:
+                return None
+
+
 def main():
     c = CardGame()
     print(f"{c.name} з характеристиками: атака {c.attack}, здоровя {c.health}")
