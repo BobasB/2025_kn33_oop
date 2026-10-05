@@ -2,7 +2,7 @@ import unittest
 from lab.main import CardGame
 
 class TestCardGame(unittest.TestCase):
-    """Це класичні unitest тести"""  
+    """Це класичні unitest тести"""
     def setUp(self):
         self.game = CardGame()
         self.another_card = CardGame()

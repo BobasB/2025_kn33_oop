@@ -80,6 +80,16 @@ class CardGame:
                 return None
 
 
+class SingleCardGame(CardGame):
+    RARITY_LEVELS = ["Common", "Rare", "Epic", "Legendary"]
+    def __init__(self, rarity: str, unic_prefix: str = "Epic"):
+        super().__init__()
+        self.name = unic_prefix + " Single Card with rarity " + rarity
+        self.attack = 5
+        self.health = 30
+        self.rarity = rarity if rarity in SingleCardGame.RARITY_LEVELS else "Common"
+
+
 def main():
     c = CardGame()
     print(f"{c.name} з характеристиками: атака {c.attack}, здоровя {c.health}")
