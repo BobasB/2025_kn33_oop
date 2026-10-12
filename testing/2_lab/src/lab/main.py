@@ -88,6 +88,23 @@ class SingleCardGame(CardGame):
         self.attack = 5
         self.health = 30
         self.rarity = rarity if rarity in SingleCardGame.RARITY_LEVELS else "Common"
+        self._internal: str = f"Пусто_{random.randint(1, 100)}_|"
+
+    def increment(self):
+        """
+        Метод для збільшення атаки та здоров'я карти.
+        """
+        self.attack += 1
+        self.health += 10
+        self._internal += "Збільшено|"
+
+    def decrement(self):
+        """
+        Метод для зменшення атаки та здоров'я карти.
+        """
+        self.attack -= 1
+        self.health -= 10
+        self._internal += "Зменшено|"
 
 
 def main():
