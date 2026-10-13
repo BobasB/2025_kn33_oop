@@ -2,6 +2,8 @@ import pytest
 from lab.main import SingleCardGame
 from time import sleep
 
+pytestmark = [pytest.mark.unit, pytest.mark.uses_fixtures, pytest.mark.card_attributes]
+
 
 @pytest.fixture
 def single_card_game_object():

@@ -1,6 +1,9 @@
 from lab.main import CardGame
 import pytest
 
+pytestmark = [pytest.mark.unit, pytest.mark.uses_fixtures, pytest.mark.comparison]
+
+
 @pytest.fixture
 def object_fixture():
     return CardGame()
@@ -12,12 +15,14 @@ def test_compare_input_arguments(object_fixture):
         assert object_fixture.compare_input_arguments_original(a, b) == a, f"Впало бо {a} <= {b} (очікуємо {a} > {b})"
 
 
+@pytest.mark.parameterized
 @pytest.mark.parametrize("a, b", [(5, 3), (-4, -8), (100, 1), (0, -5)])
 def test_compare_input_arguments_parametrized(object_fixture, a, b):
     assert object_fixture.compare_input_arguments_original(a, b) == a, "Перше число не більше другого"
     assert object_fixture.compare_input_arguments_reduced(a, b) == a, "Перше число не більше другого"
 
 
+@pytest.mark.parameterized
 @pytest.mark.parametrize("a, b", [(7,7), (0, 0), (-5, -5)])
 def test_compare_input_arguments_equal(object_fixture, a, b):
     assert object_fixture.compare_input_arguments_original(a, b) is None, "Набори не рівні, очікуємо None"

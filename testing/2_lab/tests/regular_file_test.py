@@ -1,3 +1,8 @@
+import pytest
+
+pytestmark = [pytest.mark.unit, pytest.mark.card_game]
+
+
 # Тут будуть тести бо в імені файлу є _test і pytest їх розпізнає. 
 def card_game_regular_file_test():
     """

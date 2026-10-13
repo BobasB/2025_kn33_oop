@@ -1,6 +1,13 @@
 import unittest
+
+import pytest
+
 from lab.main import CardGame
 
+pytestmark = pytest.mark.unit
+
+
+@pytest.mark.card_combat
 class TestCardGame(unittest.TestCase):
     """Це класичні unitest тести"""
     def setUp(self):
@@ -13,6 +20,7 @@ class TestCardGame(unittest.TestCase):
         self.game.hit_another_card(self.another_card)
         self.assertLess(self.another_card.health, initial_health, "Health should decrease after being hit.")
 
+@pytest.mark.card_combat
 class TestCardGameWithPytest:
     """Це pytest тести просто згруповані в клас, але без використання unittest.TestCase
     така організація дозволяє групувати тести, але pytest не потребує класів для тестів.

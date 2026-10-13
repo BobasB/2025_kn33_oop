@@ -1,6 +1,8 @@
 import pytest
 from lab.main import SingleCardGame
 
+pytestmark = [pytest.mark.unit, pytest.mark.uses_fixtures, pytest.mark.card_attributes]
+
 
 # Створюємо фікстуру для створення об'єкта SingleCardGame з різними рівнями рідкості
 @pytest.fixture
@@ -28,6 +30,7 @@ def default_prefixes():
 def single_card_game_with_custom_prefix(default_prefixes):
     return SingleCardGame(default_prefixes["rarity"], unic_prefix=default_prefixes["prefix"])
 
+@pytest.mark.parameterized
 def test_single_card_game_object_with_correct_attributes(
         single_card_game, 
         default_attack, 
@@ -47,6 +50,7 @@ def test_single_card_game_with_custom_prefix(
     assert single_card_game_with_custom_prefix.name.startswith(default_prefixes["prefix"] + " Single Card with rarity " + default_prefixes["rarity"])
 
 
+@pytest.mark.parameterized
 def test_single_card_game_rarity_assignment(expected_rarity, single_card_game):
     assert single_card_game.rarity in expected_rarity
     

@@ -1,5 +1,8 @@
 import pytest
 
+pytestmark = [pytest.mark.unit, pytest.mark.uses_fixtures, pytest.mark.input_validation]
+
+
 @pytest.fixture
 def card_game():
     """Фікстура для створення об'єкта CardGame"""

@@ -1,6 +1,10 @@
+import pytest
+
 from lab1.game import CardGame
 
+pytestmark = pytest.mark.unit
 
+@pytest.mark.game_initialization
 def test_card_game():
     obj = CardGame()
 

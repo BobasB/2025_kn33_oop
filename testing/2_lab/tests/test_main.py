@@ -1,6 +1,9 @@
 from lab.main import CardGame
 import pytest
 
+pytestmark = [pytest.mark.unit, pytest.mark.input_validation]
+
+
 def test_obj_incorrect_interraction_correct_return():
     """Тестуємо функцію incorrect_interraction на об'єкті класу CardGame"""
     card = CardGame()

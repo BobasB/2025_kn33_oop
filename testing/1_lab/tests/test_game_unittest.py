@@ -1,8 +1,14 @@
 import unittest
 
+import pytest
+
 from lab1.game import CardGame
 
 
+pytestmark = pytest.mark.unit
+
+
+@pytest.mark.game_initialization
 class TestCardGameInitialization(unittest.TestCase):
     def setUp(self):
         """
@@ -82,6 +88,7 @@ class TestCardGameInitialization(unittest.TestCase):
 
 
 
+@pytest.mark.card_combat
 class TestCardGameMethods(unittest.TestCase):
     def test_hit_another_card(self):
         """
@@ -100,6 +107,7 @@ class TestCardGameWithRaisers(unittest.TestCase):
     """
     Клас для тестування методів, які викликаюсь виключення.
     """
+    @pytest.mark.input_validation
     def test_incorrect_interraction(self):
         """
         Перевірка методу incorrect_interraction.
@@ -113,6 +121,7 @@ class TestCardGameWithRaisers(unittest.TestCase):
                 card.incorrect_interraction(value)
         self.assertEqual(card.incorrect_interraction(2), 4, "Метод incorrect_interraction не повертає правильне значення для додатнього числа")
 
+    @pytest.mark.input_handling
     def test_example_with_input(self):
         """
         Перевірка методу example_with_input.
