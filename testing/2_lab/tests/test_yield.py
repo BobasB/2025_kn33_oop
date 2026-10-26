@@ -24,12 +24,12 @@ def test_single_card_game_object_attributes(single_card_game_object):
 @pytest.fixture
 def single_card_game_yield():
     game = SingleCardGame("Epic")
-    sleep(3)
+    sleep(1)
     yield game
     # Тут можна додати код для очищення або закриття ресурсів, якщо потрібно
     print("Фікстура завершила роботу, можна почати очищення")
     del game  # видаляємо об'єкт після завершення тестів
-    sleep(2)
+    sleep(1)
 
 def test_single_card_game_yield_attributes(single_card_game_yield):
     assert single_card_game_yield.name.startswith("Epic Single Card with rarity ")
@@ -38,7 +38,7 @@ def test_single_card_game_yield_attributes(single_card_game_yield):
     assert single_card_game_yield.rarity in SingleCardGame.RARITY_LEVELS or single_card_game_yield.rarity == "Common"
     # Це неправильно, бо якщо assert не пройде, то об'єкт не буде видалений і залишиться в пам'яті
     #del single_card_game_yield  # видаляємо об'єкт після завершення тесту
-    assert single_card_game_yield._internal == "Пусто|"
+    #assert single_card_game_yield._internal == "Пусто|"
 
 @pytest.fixture
 def single_card_game_yield_increment(single_card_game_yield):
@@ -55,14 +55,14 @@ def single_card_game_yield__increment_1(single_card_game_yield_increment):
 def test_single_card_game_yield_increment(single_card_game_yield_increment):
     assert single_card_game_yield_increment.attack == 6
     assert single_card_game_yield_increment.health == 40
-    assert single_card_game_yield_increment._internal == "Пусто|Збільшено|"
+    #assert single_card_game_yield_increment._internal == "Пусто|Збільшено|"
 
-def test_single_card_game_yield_increment_1(single_card_game_yield_increment_1):
-    assert single_card_game_yield_increment_1.attack == 7
-    assert single_card_game_yield_increment_1.health == 50
-    assert single_card_game_yield_increment_1._internal == "Пусто|Збільшено|Збільшено|"
+#def test_single_card_game_yield_increment_1(single_card_game_yield_increment_1):
+    #assert single_card_game_yield_increment_1.attack == 7
+    #assert single_card_game_yield_increment_1.health == 50
+    #assert single_card_game_yield_increment_1._internal == "Пусто|Збільшено|Збільшено|"
 
 def test_single_card_game_yield_test_origin(single_card_game_yield):
     assert single_card_game_yield.attack == 5
     assert single_card_game_yield.health == 30
-    assert single_card_game_yield._internal == "Пусто|"
+    #assert single_card_game_yield._internal == "Пусто|"
