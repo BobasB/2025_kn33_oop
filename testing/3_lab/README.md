@@ -27,6 +27,6 @@ poetry add coverage --dev
 
 poetry run coverage run -m unittest discover
 
-poetry run coverage report --skip-empty 
+poetry run coverage report --skip-empty
 
 ```
