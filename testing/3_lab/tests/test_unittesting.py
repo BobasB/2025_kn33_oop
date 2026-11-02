@@ -1,4 +1,4 @@
-from lab3.new import new_function, new_3, new_none
+from lab3.new import new_function, new_3, new_none, new_2, new_4
 from lab3.main import main
 from lab3.branch import fun_with_if_else, fun_with_if_only
 
@@ -39,3 +39,10 @@ class TestNewFunction(unittest.TestCase):
         # перевіряємо гілку if x <= 0
         self.assertEqual(fun_with_if_only(-3), "Non-positive")
         self.assertEqual(fun_with_if_only(0), "Non-positive")
+
+    def test_missing_new_2_and_4(self):
+        # Перевіряємо, що new_2 та new_4 повертають рядки
+        n2 = new_2()
+        n4 = new_4()
+        self.assertIsInstance(n2, str)
+        self.assertIsInstance(n4, str)

@@ -35,3 +35,10 @@ omit = [
     "*/__init__.py",
     "*/.venv/*"
 ]
+exclude_lines = [
+"def lambda_handler",
+'if __name__ == .__main__.:',
+"def main",
+"from main import main"
+]
+fail_under = 90 # поріг або межа покриття, нижче якої тестування вважається проваленим
