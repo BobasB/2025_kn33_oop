@@ -5,14 +5,15 @@ def test_student_initialization():
     """"
     Це є простий Юніт-тест для перевірки ініціалізації об'єкта класу Student. 
     """
-    student = Student("Аліна", 20)
+    student = Student("Аліна", 20, "Київ")
     assert student.get_name == "Аліна"
     assert student.get_age == 20
+    assert student.get_city == "Київ"
 
 
 @pytest.fixture
 def student_fixture():
-    return Student("Аліна", 20)
+    return Student("Аліна", 20, "Київ")
 
 def test_student_in_group(student_fixture):
     """

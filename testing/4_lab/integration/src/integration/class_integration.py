@@ -13,7 +13,11 @@ class Student:
 
     @property
     def get_age(self):
-        return self.age
+        return self.birthday
+
+    @property
+    def get_city(self):
+        return self.city
 
 class Group:
     def __init__(self, group_name: str):
