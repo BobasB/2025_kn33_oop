@@ -39,12 +39,35 @@ class SQLMain:
         ''', (student.get_name, student.birthday, student.city))
         self.connection.commit()
 
-    def list_students(self):
+    def delete_student(self, student_id: int):
+        """
+        Видаляє студента з бази даних за його ID.
+
+        :param student_id: ID студента для видалення.
+        """
+        self.cursor.execute('DELETE FROM students WHERE id = ?', (student_id,))
+        self.connection.commit()
+
+    def list_students_as_table(self):
         """
         Повертає список студентів з бази даних.
 
-        :return: Список студентів у форматі "Name: {name}, Age: {age}".
+        :return: Список студентів у форматі "ID: {id} | Імя: {name} | Дата народження: {birthday} |".
         """
-        self.cursor.execute('SELECT name, birthday FROM students')
+        self.cursor.execute('SELECT id, name, birthday FROM students')
         students = self.cursor.fetchall()
-        return [f"| Імя: {name} | Дата народження: {birthday} |" for name, birthday in students]
+        return [f"ID: {id} | Імя: {name} | Дата народження: {birthday} |" for id, name, birthday in students]
+
+    def get_student_record_by_id(self, student_id: int):
+        """
+        Повертає студента з бази даних за його ID.
+
+        :param student_id: ID студента для пошуку.
+        :return: Студент у форматі "ID: {id} | Імя: {name} | Дата народження: {birthday} |" або None, якщо студент не знайдений.
+        """
+        self.cursor.execute('SELECT id, name, birthday FROM students WHERE id = ?', (student_id,))
+        student = self.cursor.fetchone()
+        if student:
+            student_id, name, birthday = student
+            return f"ID: {student_id} | Імя: {name} | Дата народження: {birthday} |"
+        return None
