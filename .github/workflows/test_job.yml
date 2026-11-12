@@ -1,0 +1,26 @@
+name: "Проста тестова робота"
+
+on:
+  push:
+
+jobs:
+  test_job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: "Запускаємо в Bash"
+        run: |
+          bash testing/5_lab/action.sh
+  
+  test_job_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v7
+        with:
+            python-version: '3.13'
+      - name: "Запускаємо через Python"
+        run: |
+          python testing/5_lab/action.py
