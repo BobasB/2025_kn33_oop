@@ -1,0 +1,24 @@
+name: "Запуск тестів на Лабораторній роботі 1"
+
+on:
+  push:
+
+jobs:
+  run_test_lab_1:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+        - name: Setup Python
+          uses: actions/setup-python@v7
+          with:
+              python-version: '3.13'
+        - name: Install Poetry
+          run: |
+            curl -sSL https://install.python-poetry.org | python3 -
+            echo "::add-path::${HOME}/.local/bin"  
+        - name: "Запускаємо тестування"
+          working-directory: ./testing/1_lab
+          run: |
+            poetry install
+            poetry run python -m unittest -v
