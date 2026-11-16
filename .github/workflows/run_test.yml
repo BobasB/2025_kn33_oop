@@ -15,8 +15,7 @@ jobs:
               python-version: '3.13'
         - name: Install Poetry
           run: |
-            curl -sSL https://install.python-poetry.org | python3 -
-            echo "::add-path::${HOME}/.local/bin"  
+            curl -sSL https://install.python-poetry.org | python3 - 
         - name: "Запускаємо тестування"
           working-directory: ./testing/1_lab
           run: |
