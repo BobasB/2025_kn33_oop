@@ -13,13 +13,23 @@ jobs:
           uses: actions/setup-python@v7
           with:
               python-version: '3.13'
+        - name: Cache Poetry dependencies
+          uses: actions/cache@v3
+          with:
+            path: |
+              ~/.cache/pypoetry
+              ~/.cache/pip
+            key: ${{ runner.os }}-poetry
         - name: Install Poetry
           run: |
             curl -sSL https://install.python-poetry.org | python3 - 
-        - name: "Запускаємо тестування"
+        - name: "Встановлюємо залежності"
           working-directory: ./testing/1_lab
           run: |
             poetry install
+        - name: "Запускаємо тести"
+          working-directory: ./testing/1_lab
+          run: |
             poetry run python -m unittest -v
   
   run_test_lab_2:
