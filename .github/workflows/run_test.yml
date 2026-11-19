@@ -21,3 +21,21 @@ jobs:
           run: |
             poetry install
             poetry run python -m unittest -v
+  
+  run_test_lab_2:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+  
+  run_test_lab_3:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+  
+  run_test_lab_4:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
