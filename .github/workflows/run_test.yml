@@ -6,6 +6,9 @@ on:
 jobs:
   run_test_lab_1:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lab_dir: ["./testing/1_lab", "./testing/2_lab"]
     steps:
         - name: Checkout repository
           uses: actions/checkout@v4
@@ -24,11 +27,11 @@ jobs:
           run: |
             curl -sSL https://install.python-poetry.org | python3 - 
         - name: "Встановлюємо залежності"
-          working-directory: ./testing/1_lab
+          working-directory: ${{ matrix.lab_dir }}
           run: |
             poetry install
         - name: "Запускаємо тести"
-          working-directory: ./testing/1_lab
+          working-directory: ${{ matrix.lab_dir }}
           run: |
             poetry run python -m unittest -v
   
