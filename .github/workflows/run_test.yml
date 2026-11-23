@@ -1,4 +1,5 @@
-name: "Запуск тестів на Лабораторній роботі 1"
+name: "Запуск тестів на всіх лабораторних"
+run-name: "Запуск тестів: ${{ github.actor }}, через коміт - ${{ github.event_name }}"
 
 on:
   push:
@@ -8,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        lab_dir: ["./testing/1_lab", "./testing/2_lab"]
+        lab_dir: ["./testing/1_lab", "./testing/2_lab", "./testing/3_lab", "./testing/4_lab/integration"]
     steps:
         - name: Checkout repository
           uses: actions/checkout@v4
@@ -30,10 +31,16 @@ jobs:
           working-directory: ${{ matrix.lab_dir }}
           run: |
             poetry install
-        - name: "Запускаємо тести"
-          working-directory: ${{ matrix.lab_dir }}
-          run: |
-            poetry run python -m unittest -v
+        - parallel:
+            - name: "Запускаємо тестиз Unittest"
+              working-directory: ${{ matrix.lab_dir }}
+              run: |
+                poetry run python -m unittest -v
+        
+            - name: "Запускаємо тести Pytest"
+              working-directory: ${{ matrix.lab_dir }}
+              run: |
+                poetry run pytest -v
   
   run_test_lab_2:
     runs-on: ubuntu-latest
