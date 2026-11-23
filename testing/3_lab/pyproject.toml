@@ -28,7 +28,10 @@ source = ["src/lab3"]
 branch = true
 
 [tool.coverage.report]
+format = "markdown"
 skip_empty = true
+show_missing = true
+skip_covered = true
 omit = [
     "test_*.py",
     "*/tests/*",
