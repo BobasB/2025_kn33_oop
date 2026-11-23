@@ -44,17 +44,40 @@ jobs:
   
   run_test_lab_2:
     runs-on: ubuntu-latest
-    needs: run_test_lab_1
     steps:
         - name: Checkout repository
           uses: actions/checkout@v4
   
   run_test_lab_3:
     runs-on: ubuntu-latest
+    needs: run_test_lab_1
     steps:
         - name: Checkout repository
           uses: actions/checkout@v4
-  
+        - name: Setup Python
+          uses: actions/setup-python@v7
+          with:
+              python-version: '3.13'
+        - name: Cache Poetry dependencies
+          uses: actions/cache@v3
+          with:
+            path: |
+              ~/.cache/pypoetry
+              ~/.cache/pip
+            key: ${{ runner.os }}-poetry
+        - name: Install Poetry
+          run: |
+            curl -sSL https://install.python-poetry.org | python3 - 
+        - name: "Встановлюємо залежності"
+          working-directory: "./testing/3_lab"
+          run: |
+            poetry install
+        - name: "Сторення звіту покриття Coverage"
+          working-directory: "./testing/3_lab"
+          run: |
+            poetry run coverage run -m pytest
+            poetry run coverage report >> $GITHUB_STEP_SUMMARY
+
   run_test_lab_4:
     runs-on: ubuntu-latest
     steps:
