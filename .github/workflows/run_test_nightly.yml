@@ -1,0 +1,38 @@
+# Окремий воркфлоу для запуску інтеграційних тестів у нічний час, 
+# щоб не блокувати основні тести під час розробки.
+name: "Запуск Нічних тестів"
+run-name: "Запуск нічних інтеграційних тестів"
+
+on:
+  schedule:
+    - cron: '15 0 * * *' # Запуск щодня о 00:00 UTC
+
+jobs:
+    run_integraation_tests:
+        name: "Запуск інтеграційних тестів"
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+            - name: Setup Python
+              uses: actions/setup-python@v7
+              with:
+                  python-version: '3.13'
+            - name: Cache Poetry dependencies
+              uses: actions/cache@v3
+              with:
+                path: |
+                  ~/.cache/pypoetry
+                  ~/.cache/pip
+                key: ${{ runner.os }}-poetry
+            - name: Install Poetry
+              run: |
+                curl -sSL https://install.python-poetry.org | python3 - 
+            - name: "Встановлюємо залежності"
+              working-directory: "./testing/3_lab"
+              run: |
+                poetry install
+            - name: "Запускаємо тести Pytest"
+              working-directory: "./testing/4_lab/integration"
+              run: |
+                poetry run pytest -v

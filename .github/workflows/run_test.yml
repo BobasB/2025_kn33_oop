@@ -32,6 +32,7 @@ jobs:
           run: |
             poetry install
         - parallel:
+          # Запуск тестів Unittest та Pytest у паралельних потоках
             - name: "Запускаємо тестиз Unittest"
               working-directory: ${{ matrix.lab_dir }}
               run: |
@@ -78,8 +79,3 @@ jobs:
             poetry run coverage run -m pytest
             poetry run coverage report >> $GITHUB_STEP_SUMMARY
 
-  run_test_lab_4:
-    runs-on: ubuntu-latest
-    steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
