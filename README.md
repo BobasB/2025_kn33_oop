@@ -1,3 +1,7 @@
+[![Запуск Нічних тестів](https://github.com/BobasB/2025_kn33_oop/actions/workflows/run_test_nightly.yml/badge.svg)](https://github.com/BobasB/2025_kn33_oop/actions/workflows/run_test_nightly.yml)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/BobasB/2025_kn33_oop/run_test_nightly.yml)
+
+
 # 2025_kn33_oop
 
 Репозиторій для роботи з групою КН-33 з дисципліни **Об'єктно-орієнтоване програмування (Python)**.
