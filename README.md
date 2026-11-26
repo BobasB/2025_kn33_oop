@@ -1,5 +1,7 @@
 [![Запуск Нічних тестів](https://github.com/BobasB/2025_kn33_oop/actions/workflows/run_test_nightly.yml/badge.svg)](https://github.com/BobasB/2025_kn33_oop/actions/workflows/run_test_nightly.yml)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/BobasB/2025_kn33_oop/run_test_nightly.yml)
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/BobasB/2025_kn33_oop/run_test_nightly.yml?style=plastic&color=blue)
+
 
 
 # 2025_kn33_oop
